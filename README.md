@@ -39,11 +39,11 @@ Set query conditions using QueryBuilder.
 query = QueryBuilder()
 query.match_phrase('client_id', 0)
 query.match_phrase('state', 'task_completed')
-query.timerange(range={'gte':'2019-09-09', 'lte': '2019-09-15'})
+query.timerange(_range={'gte':'2019-09-09', 'lte': '2019-09-15'})
 ```
 Determine which field would you like to get.
 ```python
-parser.add_filter([
+parser.filter_fields([
     'hits.hits._source.image_url',
     'hits.hits._source.result.category',
     'hits.hits._source.result.sku'
