@@ -16,7 +16,7 @@ Install dependencies.
 pip install -r requirements.txt
 ```
 
-### Using
+### Usage
 
 Configure these params in .env.
 ```
