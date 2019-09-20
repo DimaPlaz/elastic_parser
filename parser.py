@@ -87,11 +87,8 @@ class Parser:
         with open(f'{self.save_to}{self.parse_name}_{part}', 'w') as f:
             json.dump(self.parsed, f)
 
-    def add_filter(self, fields: list, reset: bool = False):
-        if reset:
-            self._hits_filter = fields
-        else:
-            self._hits_filter.extend(fields)
+    def filter_fields(self, fields: list):
+        self._hits_filter.extend(fields)
 
 
 class QueryBuilder:
@@ -112,12 +109,12 @@ class QueryBuilder:
         condition = {field: {'query': value}}
         self._query['query']['bool']['must'].append({'match_phrase': condition})
 
-    def timerange(self, day: str = None, range: dict = None, date_format: str = 'yyyy-MM-dd'):
+    def timerange(self, day: str = None, _range: dict = None, date_format: str = 'yyyy-MM-dd'):
         if day:
             gte, lte = day, day
-        elif range:
-            gte = range.get('gte')
-            lte = range.get('lte')
+        elif _range:
+            gte = _range.get('gte')
+            lte = _range.get('lte')
         else:
             raise Exception('The date should be defined.')
 
