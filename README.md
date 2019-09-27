@@ -41,7 +41,7 @@ query.match_phrase('client_id', 0)
 query.match_phrase('state', 'task_completed')
 query.timerange(_range={'gte':'2019-09-09', 'lte': '2019-09-15'})
 ```
-Determine which field would you like to get.
+Determine which fields would you like to get.
 ```python
 parser.filter_fields([
     'hits.hits._source.image_url',
